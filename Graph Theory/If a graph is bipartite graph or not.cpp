@@ -46,7 +46,7 @@ int main()
             }
         }
     }
-    if(x == 1 || n == 1)
+    if(x == 1)
         cout<<"NO"<<endl;
     else
     {
