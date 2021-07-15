@@ -45,7 +45,7 @@ void dijkstra(ll s)
     fill(d , d+n+1 , 1e18);
     d[s] = 0;
     ll u;
-    priority_queue<pair<ll,ll>,vector<pair<ll,ll> >, less<pair<ll,ll> > > pq;
+    priority_queue<pair<ll,ll>,vector<pair<ll,ll> >, greater<pair<ll,ll> > > pq;
     pq.push({d[s] , s});
     while(pq.size()!=0)
     {
