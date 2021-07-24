@@ -36,12 +36,10 @@ using namespace __gnu_pbds;
 typedef tree<int,null_type,less_equal<int>,rb_tree_tag,tree_order_statistics_node_update> ordered_set;
 
 vector<pll>v[100006];
-bool vis[100006];
 ll n , d[100006];
 
 void dijkstra(ll s)
 {
-    fill(vis , vis+n+1 , 0);
     fill(d , d+n+1 , 1e18);
     d[s] = 0;
     ll u;
@@ -51,7 +49,6 @@ void dijkstra(ll s)
     {
         u = pq.top().second;
         pq.pop();
-        vis[u] = 1;
         vector<pll>::iterator it;
         for(it = v[u].begin(); it!=v[u].end(); it++)
         {
