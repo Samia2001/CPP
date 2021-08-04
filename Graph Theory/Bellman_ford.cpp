@@ -54,9 +54,9 @@ void belford(ll n, ll m, ll st, edge e[])
     }
     rep1(i, m)
     {
-        ll u=e[j].s;
-        ll v=e[j].d;
-        ll wt=e[j].w;
+        ll u=e[i].s;
+        ll v=e[i].d;
+        ll wt=e[i].w;
 
         if(dis[u]+wt < dis[v])
         {
