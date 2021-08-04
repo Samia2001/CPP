@@ -36,7 +36,7 @@ ll dis[100005] , x = 0 , p , q;
 void belford(ll n, ll m, ll st)
 {
     ll i, j;
-    fill(dis, dis+n+1, -1e18);
+    fill(dis, dis+n+1, -1e18);//in shortest path it will be 1e18
     dis[st] = 0;
     rep(i, n+1)
     {
@@ -46,7 +46,7 @@ void belford(ll n, ll m, ll st)
             ll v = e[j].d;
             ll wt = e[j].w;
 
-            if(dis[u]!=-1e18 && dis[u]+wt>dis[v])
+            if(dis[u]!=-1e18 && dis[u]+wt>dis[v])//< sign
             {
                 dis[v] = dis[u]+wt;
             }
