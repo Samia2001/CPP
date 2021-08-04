@@ -18,27 +18,27 @@
 #define pi acos(-1)
 #define pb push_back
 #define pll pair<ll , ll>
+#define pqmn priority_queue<ll, vector<ll>, std::greater<ll> >
 #define nm -1e18
 #define ok return 0
 
 using namespace std;
 using namespace __gnu_pbds;
-typedef tree<int,null_type,less_equal<int>,rb_tree_tag,tree_order_statistics_node_update> ordered_set;
-
+typedef tree<int,null_type,greater_equal<int>,rb_tree_tag,tree_order_statistics_node_update> ordered_set;
 struct edge
 {
-  ll s, d, w;
+    ll s, d, w;
 };
 
 edge e[100005];
-ll dis[100005];
+ll dis[100005] , x = 0 , p , q;
 
-void belford(ll n, ll m, ll st, edge e[])
+void belford(ll n, ll m, ll st)
 {
-    ll i , j;
-    fill(dis, dis+n+1, 1e18);
+    ll i, j;
+    fill(dis, dis+n+1, -1e18);
     dis[st] = 0;
-    rep(i, n-1)
+    rep(i, n+1)
     {
         rep1(j, m)
         {
@@ -46,23 +46,15 @@ void belford(ll n, ll m, ll st, edge e[])
             ll v = e[j].d;
             ll wt = e[j].w;
 
-            if(dis[u]!=1e18 && dis[u]+wt<dis[v])
+            if(dis[u]!=-1e18 && dis[u]+wt>dis[v])
             {
                 dis[v] = dis[u]+wt;
             }
         }
-    }
-    rep1(i, m)
-    {
-        ll u=e[i].s;
-        ll v=e[i].d;
-        ll wt=e[i].w;
-
-        if(dis[u]+wt < dis[v])
-        {
-            cout<<1e9;
-            return;
-        }
+        if(i==n-1)
+            p = dis[n];
+        if(i==n)
+            q = dis[n];
     }
 
 }
@@ -70,24 +62,22 @@ void belford(ll n, ll m, ll st, edge e[])
 int main()
 {
     FastRead
-    ml
+    ll  n, m, i, a, b, w;
+    cin >> n >> m;
+
+    rep1(i, m)
     {
-        ll  n , m, i, a, b, w, st,en;
-        cin >> n >> m >> st >> en;
+        cin>>e[i].s>>e[i].d>>e[i].w;
 
-
-        rep(i, m)
-        {
-            cin>>e[i].s>>e[i].d>>e[i].w;
-
-        }
-        belford(n, m, st, e);
-
-        if(dis[en]!=1e18)
-            cout<<dis[en]<<endl;
-        else
-            cout<<1e9<<endl;
     }
+
+    belford(n, m, 1);
+
+    if(p==q)
+        cout<<dis[n]<<endl;
+    else
+        cout<<"inf"<<endl;
 
     return 0;
 }
+
