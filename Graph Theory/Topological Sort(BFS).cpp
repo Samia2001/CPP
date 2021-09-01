@@ -28,16 +28,23 @@ typedef tree<ll,null_type,less_equal<ll>,rb_tree_tag,tree_order_statistics_node_
 
 vector<ll>v[100005],ans;
 vector<ll>::iterator it;
-bool vis[100005];
-ll in[100005];
-queue<ll>q;
+ll in[100005] ;
 
-void bfs()
+
+void bfs(ll n)
 {
+    ll i;
+    queue<ll>q;
+    rep1(i, n)
+    {
+        if(in[i]==0)
+            q.push(i);
+    }
 
     while(q.size()!=0)
     {
         ll u = q.front();
+
 
         if(in[u]==0)
         {
@@ -58,26 +65,29 @@ void bfs()
 int main()
 {
     FastRead
-    ll n, m, i, a, b;
-    cin >> n >> m;
+   
+        ll n, m, i, a, b;
+        cin >> n >> m;
 
-    rep(i, m)
-    {
-        cin >> a >> b;
-        in[b]++;
-        v[a].push_back(b);
-    }
-
-    rep1(i, n)
-    {
-        if(in[i]==0)
-            q.push(i);
-    }
-    bfs();
+        rep(i, m)
+        {
+            cin >> a >> b;
+            in[b]++;
+            v[a].push_back(b);
+        }
 
 
-    rep(i, ans.size())
-    cout<<ans[i]<<" ";
+        bfs(n);
+
+
+        rep(i, ans.size())
+        cout<<ans[i]<<" ";
+        cout<<endl;
+
+
+        ans.clear();
+        memset(v, 0, sizeof(v));
+        memset(in, 0, sizeof(in));
 
     return 0;
 }
