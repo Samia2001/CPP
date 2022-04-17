@@ -29,8 +29,8 @@ typedef tree<ll,null_type,less_equal<ll>,rb_tree_tag,tree_order_statistics_node_
 struct info
 {
     ll prop, sum;
-}
-seg[800005];
+};
+info seg[800005];
 
 ll a[200005];
 
