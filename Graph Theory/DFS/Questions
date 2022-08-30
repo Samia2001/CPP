@@ -1,0 +1,12 @@
+DFS
+1) Detect cycle in an undirected graph
+2) If the graph is Bipartite
+3) Given a grid of dimension nxm containing 0s and 1s. Find the unit area of the largest region of 1s.
+4) Given a Directed Graph, find a Mother Vertex in the Graph (if present). 
+A Mother Vertex is a vertex through which we can reach all the other vertices of the Graph.
+5) topological sort
+6) 2 edge connectivity
+7) Strongly connected
+8) is it a graph
+9) is it a tree
+10)diameter of a graph
