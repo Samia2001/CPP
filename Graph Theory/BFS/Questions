@@ -1,0 +1,15 @@
+BFS
+1)Graph colouring
+2)Shortest path
+3)Minimum length paths between 1 to N including each node
+4)Number of minimum length paths between 1 to N including each node
+5)Number of distinct Shortest Paths from Node 1 to N in a Weighted and Directed Graph
+6)Breadth First Traversal ( BFS ) on a 2D array
+7)Distance of each node of a Binary Tree from the root node using BFS
+8)Find any simple cycle in an undirected unweighted Graph
+9)Minimum hours taken by Zombies to infect all Humans by infecting up, left, down and right only
+10)Minimum nodes to be colored in a Graph such that every node has a colored neighbour
+11)Find if there is a path between two vertices in an undirected graph
+12)Program to print all the non-reachable nodes
+13)Minimum cost to reach from the top-left to the bottom-right corner of a matrix
+14)Find parent of each node in a tree for multiple queries
