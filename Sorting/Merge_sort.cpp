@@ -30,10 +30,9 @@ cin.tie(0);
 #define pqmn priority_queue<ll, vector<ll>, std::greater<ll> >
 #define nm -1e18
 #define ok return 0
-
 using namespace std;
 using namespace __gnu_pbds;
-typedef tree<ll, null_type, less_equal<ll>, rb_tree_tag, tree_order_statistics_node_update> ordered_set;
+typedef tree<ll, null_type, less<ll>, rb_tree_tag, tree_order_statistics_node_update> ordered_set;
 ///Chess moves.........
 // int dx[] = {+0, +0, -1, +1}; ///Up-down, Left-Right// int dy[] = {+1, -1, +0, +0};
 // int dx[] = {+0,+0,+1,-1,-1,+1,-1,+1}; ///King's Move// int dy[] = {-1,+1,+0,+0,+1,+1,-1,-1};
@@ -47,7 +46,6 @@ ll lcm(ll a, ll b) { return (a / gcd(a, b) * b);}
 ll bigmod(ll a, ll b, ll mod) {b %= (mod - 1); ll result = 1ll; while (b > 0ll) {if (b & 1ll) result = result * a % mod; a = a * a % mod; b >>= 1ll;} return result;}
 ll inverse(ll a, ll M) {if (gcd(a, M) == 1) return bigmod(a, M - 2, M) % M; return 1;}
 ll ncr(ll a, ll b, ll mod) { ll x = max(a - b, b), ans = 1; for (ll K = a, L = 1; K >= x + 1; K--, L++) { ans = ans * K % mod; ans = ans * inverse(L, mod) % mod;} return ans;}
-
 bool cmp(const pair<ll, ll> &a, const pair<ll, ll> &b)
 {
   if (a.first == b.first)
@@ -55,65 +53,70 @@ bool cmp(const pair<ll, ll> &a, const pair<ll, ll> &b)
   else
     return (a.first < b.first);
 }
-ll a[1000];
+ll a[500005],cnt;
 void merge(ll l , ll m , ll r)
 {
   ll i = l;
-  ll j = m+1;
-  ll k = l;
-  ll b[r-l+6];
-  while(i<=m && j<=r)
+  ll j = m + 1;
+  ll k = 0;
+  ll b[r - l + 6];
+  while (i <= m && j <= r)
   {
-    if(a[i]>a[j])
+    if (a[i] > a[j])
     {
-      b[k++]=a[j++];
+      b[k++] = a[j++];
+      cnt++;
     }
     else
-      b[k++] = a[i++];
+      {b[k++] = a[i++];
+        cnt++;
+      }
   }
-  while(i<=m)
+  while (i <= m)
   {
-    b[k++]=a[i++];
+    b[k++] = a[i++];
+    cnt++;
   }
-  while(j<=r)
+  while (j <= r)
   {
-    b[k++]=a[j++];
+    b[k++] = a[j++];
+    cnt++;
   }
-  for(int k=l; k<=r; k++) {
-        a[k] = b[k] ;
-        
-    }
+  for (i = 0; i <k; i++) {
+    a[i+l] = b[i] ;
+
+  }
 }
-void merge_sort(ll l,ll r)
+void merge_sort(ll l, ll r)
 {
-if(l==r)return;
-ll m = (l+r)/2;
-merge_sort(l , m);
-merge_sort(m+1,r);
-merge(l,m,r);
+  if (l == r)return;
+  ll m = (l + r) / 2;
+  merge_sort(l , m);
+  merge_sort(m + 1, r);
+  merge(l, m, r);
 
 }
 
 int main()
 {
-#ifndef ONLINE_JUDGE
-  freopen("input.txt", "r", stdin);
-  freopen("outp1.txt", "w", stdout);
-#endif
+
   ll i , j;
   nml
   {
     ll n;
     cin >> n;
-   
+
     rep(i , n)
     {
       cin >> a[i];
     }
 
-    merge_sort(0 , n-1);
-    rep(i , n)
-    cout << a[i] << endl;
+    merge_sort(0 , n - 1);
+    for (i = 0 ; i < n - 1 ; i++)
+      cout << a[i] << " ";
+    cout << a[n - 1] << endl;
+    cout << cnt << endl;
+
 
   }
 
